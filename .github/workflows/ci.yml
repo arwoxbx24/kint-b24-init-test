@@ -1,0 +1,19 @@
+name: CI
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  php:
+    name: PHP offline checks
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - name: Runtime requirements
+        run: php -r 'foreach (["curl", "pdo_sqlite", "mbstring"] as $extension) { if (!extension_loaded($extension)) { fwrite(STDERR, "Missing $extension\n"); exit(1); } }'
+      - name: PHP syntax
+        run: find src bin tests prototype -name '*.php' -print0 | xargs -0 -n1 php -d short_open_tag=1 -l
+      - name: Offline regression tests
+        run: for test in tests/test_*.php; do php "$test" || exit 1; done

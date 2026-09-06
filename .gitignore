@@ -1,0 +1,23 @@
+.omx-state-locks/
+.omx-state-locks.identity.json
+.codex/*
+!.codex/agents/
+!.codex/agents/**
+!.codex/skills/
+!.codex/skills/**
+.codex/skills/.system/**
+!.codex/prompts/
+!.codex/prompts/**
+.omx/
+.repowise/
+.beads/
+.evidence/
+.env
+.env.*
+*.db
+*.db-*
+*.sqlite*
+*.log
+
+# Machine-local vendor installation
+.codex/
