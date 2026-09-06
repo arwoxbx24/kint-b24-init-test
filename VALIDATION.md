@@ -15,6 +15,18 @@ was read only. The initial publication contains 24 explicitly selected files.
 - Gitleaks directory and initial Git history scans: no findings.
 - Initial GitHub CI: https://github.com/arwoxbx24/kint-b24-init-test/actions/runs/34032448453
 - Active ruleset: https://github.com/arwoxbx24/kint-b24-init-test/rules/22385133
+- A real direct push was rejected with GH013: pull request required and
+  `PHP offline checks` expected. The protected branch was not changed.
+- PR #1 checks succeeded; GitHub reported BLOCKED / REVIEW_REQUIRED.
+- GitHub secret scanning and push protection are enabled; alerts list was empty.
+- Repeat mise preparation skipped Git, OMX and index initialization; the OMX
+  diagnostic again reported 20 passed, 0 warnings, 0 failed.
+- A fresh `omx exec` using the existing authenticated user Codex home returned
+  `OMX_KINT_TEST_READY`, exit 0, with SessionStart/UserPromptSubmit/Stop hooks.
+  The isolated project home has no credentials and returned HTTP 401 when used
+  alone. No credentials were copied; use the existing authenticated home to run.
+- Original project HEAD remained 5164ca3c718b7e38df5679d59a5addaa1ff596b9
+  with a clean worktree after the exercise.
 
 ## Acceptance contract
 
